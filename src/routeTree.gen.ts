@@ -9,38 +9,82 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as GamesRouteImport } from './routes/games'
+import { Route as ConsultRouteImport } from './routes/consult'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as YearYearRouteImport } from './routes/year.$year'
 
+const GamesRoute = GamesRouteImport.update({
+  id: '/games',
+  path: '/games',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsultRoute = ConsultRouteImport.update({
+  id: '/consult',
+  path: '/consult',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const YearYearRoute = YearYearRouteImport.update({
+  id: '/year/$year',
+  path: '/year/$year',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/consult': typeof ConsultRoute
+  '/games': typeof GamesRoute
+  '/year/$year': typeof YearYearRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/consult': typeof ConsultRoute
+  '/games': typeof GamesRoute
+  '/year/$year': typeof YearYearRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/consult': typeof ConsultRoute
+  '/games': typeof GamesRoute
+  '/year/$year': typeof YearYearRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/consult' | '/games' | '/year/$year'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/consult' | '/games' | '/year/$year'
+  id: '__root__' | '/' | '/consult' | '/games' | '/year/$year'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ConsultRoute: typeof ConsultRoute
+  GamesRoute: typeof GamesRoute
+  YearYearRoute: typeof YearYearRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/games': {
+      id: '/games'
+      path: '/games'
+      fullPath: '/games'
+      preLoaderRoute: typeof GamesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/consult': {
+      id: '/consult'
+      path: '/consult'
+      fullPath: '/consult'
+      preLoaderRoute: typeof ConsultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +92,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/year/$year': {
+      id: '/year/$year'
+      path: '/year/$year'
+      fullPath: '/year/$year'
+      preLoaderRoute: typeof YearYearRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ConsultRoute: ConsultRoute,
+  GamesRoute: GamesRoute,
+  YearYearRoute: YearYearRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
