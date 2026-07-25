@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ConsultRouteImport } from './routes/consult'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as YearYearRouteImport } from './routes/year.$year'
 
+const ConsultRoute = ConsultRouteImport.update({
+  id: '/consult',
+  path: '/consult',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -25,32 +31,43 @@ const YearYearRoute = YearYearRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/consult': typeof ConsultRoute
   '/year/$year': typeof YearYearRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/consult': typeof ConsultRoute
   '/year/$year': typeof YearYearRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/consult': typeof ConsultRoute
   '/year/$year': typeof YearYearRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/year/$year'
+  fullPaths: '/' | '/consult' | '/year/$year'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/year/$year'
-  id: '__root__' | '/' | '/year/$year'
+  to: '/' | '/consult' | '/year/$year'
+  id: '__root__' | '/' | '/consult' | '/year/$year'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ConsultRoute: typeof ConsultRoute
   YearYearRoute: typeof YearYearRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/consult': {
+      id: '/consult'
+      path: '/consult'
+      fullPath: '/consult'
+      preLoaderRoute: typeof ConsultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ConsultRoute: ConsultRoute,
   YearYearRoute: YearYearRoute,
 }
 export const routeTree = rootRouteImport
