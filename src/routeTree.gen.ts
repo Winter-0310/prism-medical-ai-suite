@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as GamesRouteImport } from './routes/games'
 import { Route as ConsultRouteImport } from './routes/consult'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as YearYearRouteImport } from './routes/year.$year'
 
+const GamesRoute = GamesRouteImport.update({
+  id: '/games',
+  path: '/games',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ConsultRoute = ConsultRouteImport.update({
   id: '/consult',
   path: '/consult',
@@ -32,35 +38,46 @@ const YearYearRoute = YearYearRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/consult': typeof ConsultRoute
+  '/games': typeof GamesRoute
   '/year/$year': typeof YearYearRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/consult': typeof ConsultRoute
+  '/games': typeof GamesRoute
   '/year/$year': typeof YearYearRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/consult': typeof ConsultRoute
+  '/games': typeof GamesRoute
   '/year/$year': typeof YearYearRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/consult' | '/year/$year'
+  fullPaths: '/' | '/consult' | '/games' | '/year/$year'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/consult' | '/year/$year'
-  id: '__root__' | '/' | '/consult' | '/year/$year'
+  to: '/' | '/consult' | '/games' | '/year/$year'
+  id: '__root__' | '/' | '/consult' | '/games' | '/year/$year'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ConsultRoute: typeof ConsultRoute
+  GamesRoute: typeof GamesRoute
   YearYearRoute: typeof YearYearRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/games': {
+      id: '/games'
+      path: '/games'
+      fullPath: '/games'
+      preLoaderRoute: typeof GamesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/consult': {
       id: '/consult'
       path: '/consult'
@@ -88,8 +105,19 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ConsultRoute: ConsultRoute,
+  GamesRoute: GamesRoute,
   YearYearRoute: YearYearRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
