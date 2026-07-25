@@ -9,7 +9,7 @@ export const Route = createFileRoute("/")({
       { title: "Prism Medical AI — High-Yield MBBS Study Suite" },
       { name: "description", content: "Refracting complex medical knowledge into high-yield clinical insights for MBBS students across all 5 years of the integrated modular curriculum." },
       { property: "og:title", content: "Prism Medical AI — High-Yield MBBS Study Suite" },
-      { property: "og:description", content: "AI-powered MBBS study companion covering modules, subjects, OSCE/TOACS stations and clinical ward queries." },
+      { property: "og:description", content: "Refracting complex medical knowledge into high-yield clinical insights for MBBS students across all 5 years of the integrated modular curriculum." },
     ],
   }),
   component: Home,

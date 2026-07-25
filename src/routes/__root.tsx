@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Prism Medical AI — High-Yield MBBS Study Suite" },
+      { name: "description", content: "Refracting complex medical knowledge into high-yield clinical insights for MBBS students across all 5 years of the integrated modular curriculum." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Prism Medical AI — High-Yield MBBS Study Suite" },
+      { property: "og:description", content: "Refracting complex medical knowledge into high-yield clinical insights for MBBS students across all 5 years of the integrated modular curriculum." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Prism Medical AI — High-Yield MBBS Study Suite" },
+      { name: "twitter:description", content: "Refracting complex medical knowledge into high-yield clinical insights for MBBS students across all 5 years of the integrated modular curriculum." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3e6f05c0-974e-498a-bdab-0cb130248acd/id-preview-1d597fc9--464bc1ae-178c-4254-8931-d0652f7f329a.lovable.app-1785012253632.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3e6f05c0-974e-498a-bdab-0cb130248acd/id-preview-1d597fc9--464bc1ae-178c-4254-8931-d0652f7f329a.lovable.app-1785012253632.png" },
     ],
     links: [
       {
