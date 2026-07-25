@@ -31,11 +31,8 @@ export const askPrism = createServerFn({ method: "POST" })
     try {
       const { text } = await generateText({
         model,
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          { role: "system", content: `Context mode: ${data.mode}` },
-          { role: "user", content: data.prompt },
-        ],
+        system: `${SYSTEM_PROMPT}\n\nContext mode: ${data.mode}`,
+        prompt: data.prompt,
       });
       return { text };
     } catch (err) {
