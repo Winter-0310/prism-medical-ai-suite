@@ -19,9 +19,13 @@ The application is published directly through Lovable, making it instantly acces
 ![Prism Medical Hub Dashboard](screenshot1.png)
 *Figure 1: Hero Entry Screen featuring dark-green ambient styling, font size scalers, Do Not Disturb toggle, quick stats, and the 5-Year MBBS selection grid.*
 
-### 2. Active Clinical Study Module & AI Consult
-![Prism Medical Hub Active Session](screenshot2.png)
-*Figure 2: Active clinical workspace displaying high-yield modular notes, TOACS step-by-step guidance, and interactive study games.*
+### 2. Medical Gamification Zone
+![Prism Medical Gamification Zone](screenshot2.png)
+*Figure 2: Interactive clinical revision games including Rapid-Fire Diagnosis Blitz, Pharma-Match, and OSCE Station Simulator.*
+
+### 3. Active AI Curriculum & Clinical Consult
+![Prism Medical Active AI Consult](screenshot3.png)
+*Figure 3: Active AI workspace displaying high-yield modular notes, curriculum verdict tags, and structured clinical guidance.*
 
 ---
 
@@ -36,12 +40,12 @@ The application is published directly through Lovable, making it instantly acces
 * **Top Accessibility Bar:** Includes App Logo, Theme Switcher, Font Size Scaler (**S / M / L**), and a **Do Not Disturb (DND)** workspace focus toggle.
 * **Navigation Header:** Direct routing across *"MBBS Curriculum"*, *"Medical Gamification Zone"*, and *"AI Curriculum Consult"*.
 * **Quick Stats Bar:** At-a-glance status covering 5 Academic Years, Integrated Modular Syllabus, and OSCE/TOACS Readiness.
-* **MBBS Year Grid:** 5 dark-gradient cards with custom cover art:
-  * **Year 1:** Basic Human Body / Molecular DNA.
-  * **Year 2:** Organ Systems / Neuro-Anatomical Brain.
-  * **Year 3:** Laboratory / Microscopic Microbiology.
-  * **Year 4:** Specialized Diagnostics / Eye-ENT Sensory.
-  * **Year 5:** Clinical Ward / Stethoscope & Bedside Hospital.
+* **MBBS Year Grid:** 5 high-contrast dark gradient cards:
+  * **Year 1:** Basic Human Body & Molecular DNA Foundations.
+  * **Year 2:** Organ Systems & Neuro-Anatomy Workspace.
+  * **Year 3:** Pathology, Pharmacology & Microscopic Microbiology.
+  * **Year 4:** Specialized Diagnostics & Eye-ENT Sensory Modules.
+  * **Year 5:** Clinical Wards, Bedside Medicine & TOACS/OSCE Prep.
 
 ### 3. Dual Navigation & Mapped Curriculum Workspace
 Every academic year workspace includes a TWO-toggle selection mode (**"Browse by Module"** vs. **"Browse by Subject"**) with 100% readable dark gradient contrast cards:
